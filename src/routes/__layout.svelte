@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Navbar from '$lib/components/Navbar.svelte';
+    import Page from '$lib/components/Page.svelte';
     import { loginWithGithub } from '$lib/firebase/auth/provider/provider';
     import { initFirebase } from '$lib/firebase/firebase';
     import { currentUser } from '$lib/user/userStore';
@@ -14,12 +16,17 @@
     };
 </script>
 
-<main class="max-w-screen-md h-screen overflow-hidden mx-auto p-2 md:p-3">
-    {#if $currentUser === undefined}
-        Lädt...
-    {:else if $currentUser === null}
+{#if $currentUser === undefined}
+    <Page>Lädt...</Page>
+{:else if $currentUser === null}
+    <Page>
         <button class="btn" on:click={login}>Login</button>
-    {:else}
-        <slot />
-    {/if}
-</main>
+    </Page>
+{:else}
+    <div class="h-screen grid grid-rows-[max-content_1fr]">
+        <Navbar />
+        <Page>
+            <slot />
+        </Page>
+    </div>
+{/if}
