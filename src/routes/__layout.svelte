@@ -14,7 +14,7 @@
     };
 </script>
 
-<main class="container mx-auto p-2 md:p-3">
+<main class="max-w-screen-md h-screen overflow-hidden mx-auto p-2 md:p-3">
     {#if $currentUser === undefined}
         Lädt...
     {:else if $currentUser === null}

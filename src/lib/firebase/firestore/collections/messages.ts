@@ -1,5 +1,4 @@
 import type { Message } from '$lib/message/message';
-import type { Unsubscribe } from 'firebase/auth';
 import {
     addDoc,
     collection,
@@ -11,6 +10,7 @@ import {
     query,
     QueryDocumentSnapshot,
     QuerySnapshot,
+    Timestamp,
     type DocumentData,
     type FirestoreDataConverter,
     type SnapshotOptions,
@@ -21,7 +21,7 @@ interface MessageDoc {
     userId: string;
     userName: string;
     content: string;
-    createdAt: Date;
+    createdAt: Timestamp;
 }
 
 const messageConverter: FirestoreDataConverter<Message> = {
@@ -30,18 +30,19 @@ const messageConverter: FirestoreDataConverter<Message> = {
             userId: message.user.id,
             userName: message.user.name,
             content: message.content,
-            createdAt: message.createdAt,
+            createdAt: Timestamp.fromDate(message.createdAt),
         };
     },
     fromFirestore(snapshot: QueryDocumentSnapshot<MessageDoc>, options: SnapshotOptions): Message {
         const data = snapshot.data(options);
+
         return {
             user: {
                 id: data.userId,
                 name: data.userName,
             },
             content: data.content,
-            createdAt: data.createdAt ?? new Date(),
+            createdAt: data.createdAt.toDate(),
         };
     },
 };

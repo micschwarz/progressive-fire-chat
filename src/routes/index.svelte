@@ -8,15 +8,19 @@
     const messages = getStore();
 </script>
 
-Progressive Fire Chat 🔥 Hi {$currentUser?.name}
-<button class="btn" on:click={logout}>Logout</button>
+<div class="h-full grid grid-rows-[max-content_1fr_max-content] gap-2">
+    <div>
+        Progressive Fire Chat 🔥 Hi {$currentUser?.name}
+        <button class="btn" on:click={logout}>Logout</button>
+    </div>
 
-<hr />
+    <div class="overflow-hidden">
+        {#if !$messages}
+            Lädt...
+        {:else}
+            <Messages messages={$messages} />
+        {/if}
+    </div>
 
-{#if !$messages}
-    Lädt...
-{:else}
-    <Messages messages={$messages} />
-{/if}
-
-<MessageInput />
+    <MessageInput />
+</div>

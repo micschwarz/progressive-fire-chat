@@ -14,7 +14,7 @@ const createUser = (user: FirebaseUser): User => {
 export const initAuth = (app: FirebaseApp) => {
     const auth = getAuth(app);
     if (import.meta.env.DEV) {
-        connectAuthEmulator(auth, 'http://localhost:9099');
+        connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
     }
 
     onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {

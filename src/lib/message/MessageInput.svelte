@@ -7,14 +7,16 @@
     let message = '';
     $: messageSendable = message.length > 0;
 
-    let sendRequest = Promise.resolve();
+    let sending = false;
 
-    const send = () => {
-        if (!messageSendable) {
+    const send = async () => {
+        if (!messageSendable || sending) {
             return;
         }
 
-        sendRequest = add({
+        sending = true;
+
+        const request = add({
             user: {
                 id: user!.id,
                 name: user!.name,
@@ -24,18 +26,27 @@
         });
 
         message = '';
+        await request;
+
+        sending = false;
     };
 </script>
 
-<form on:submit|preventDefault={send} class="flex gap-1 w-full max-w-md">
+<form on:submit|preventDefault={send} class="flex gap-1 w-full">
     <div class="grow">
-        <input placeholder="Nachricht" class="input input-bordered w-full" type="text" bind:value={message} />
+        <input
+            placeholder="Nachricht"
+            class="input input-bordered w-full"
+            type="text"
+            bind:value={message}
+            disabled={sending}
+        />
     </div>
     <div class="w-32">
-        {#await sendRequest}
+        {#if sending}
             <button class="btn btn-primary w-full loading" type="button" disabled>Sende</button>
-        {:then _}
+        {:else}
             <button class="btn btn-primary w-full" type="submit" disabled={!messageSendable}>Senden</button>
-        {/await}
+        {/if}
     </div>
 </form>
