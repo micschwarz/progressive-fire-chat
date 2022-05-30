@@ -1,7 +1,15 @@
 import type { User } from '$lib/user/user';
 import { currentUser } from '$lib/user/userStore';
+import { async } from '@firebase/util';
 import type { FirebaseApp } from 'firebase/app';
-import { connectAuthEmulator, getAuth, onAuthStateChanged, signOut, type UserCredential } from 'firebase/auth';
+import {
+    connectAuthEmulator,
+    getAuth,
+    onAuthStateChanged,
+    signOut,
+    updateProfile,
+    type UserCredential,
+} from 'firebase/auth';
 
 type FirebaseUser = UserCredential['user'];
 const createUser = (user: FirebaseUser): User => {
@@ -30,4 +38,23 @@ export const initAuth = (app: FirebaseApp) => {
 export const logout = async () => {
     const auth = getAuth();
     await signOut(auth);
+};
+
+export const changeName = async (displayName: string | null): Promise<void> => {
+    const auth = getAuth();
+    if (!auth.currentUser) {
+        throw new Error('No user logged in');
+    }
+
+    await updateProfile(auth.currentUser, {
+        displayName,
+    });
+
+    currentUser.update((user) => {
+        if (user) {
+            user.name = displayName ?? 'Anonym';
+        }
+
+        return user;
+    });
 };
