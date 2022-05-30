@@ -14,10 +14,12 @@
     };
 </script>
 
-{#if $currentUser === undefined}
-    Lädt...
-{:else if $currentUser === null}
-    <button class="btn" on:click={login}>Login</button>
-{:else}
-    <slot />
-{/if}
+<main class="container mx-auto p-2 md:p-3">
+    {#if $currentUser === undefined}
+        Lädt...
+    {:else if $currentUser === null}
+        <button class="btn" on:click={login}>Login</button>
+    {:else}
+        <slot />
+    {/if}
+</main>
