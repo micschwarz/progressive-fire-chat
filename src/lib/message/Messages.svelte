@@ -3,7 +3,7 @@
     import Message from './Message.svelte';
 
     export let messages: MessageModel[];
-    $: reversed = messages.reverse();
+    $: reversed = [...messages].reverse();
 </script>
 
 <div class="flex flex-col-reverse gap-1 overflow-y-auto h-full">
