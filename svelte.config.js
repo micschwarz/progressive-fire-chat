@@ -11,6 +11,15 @@ const config = {
         adapter: adapter({
             fallback: 'index.html',
         }),
+        vite: {
+            ssr: {
+                noExternal: [
+                    '@fortawesome/fontawesome-svg-core',
+                    '@fortawesome/free-regular-svg-icons',
+                    '@fortawesome/free-solid-svg-icons',
+                ],
+            },
+        },
     },
 };
 
