@@ -53,8 +53,12 @@
                 </div>
             {/if}
 
-            <a class="btn btn-ghost btn-square" href="/settings"><Icon icon={faCog} /></a>
-            <button class="btn btn-ghost" on:click={logout}><Icon icon={faSignOut} /></button>
+            <div class="tooltip tooltip-bottom" data-tip="Einstellungen">
+                <a class="btn btn-ghost btn-square" href="/settings"><Icon icon={faCog} /></a>
+            </div>
+            <div class="tooltip tooltip-bottom" data-tip="Abmelden">
+                <button class="btn btn-ghost" on:click={logout}><Icon icon={faSignOut} /></button>
+            </div>
         </div>
     </div>
 </div>
