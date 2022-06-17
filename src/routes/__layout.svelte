@@ -1,5 +1,6 @@
 <script lang="ts">
     import Navbar from '$lib/components/Navbar.svelte';
+    import OfflineAlert from '$lib/components/OfflineAlert.svelte';
     import Page from '$lib/components/Page.svelte';
     import { loginWithGithub } from '$lib/firebase/auth/provider/provider';
     import { initFirebase } from '$lib/firebase/firebase';
@@ -15,6 +16,8 @@
         loginWithGithub();
     };
 </script>
+
+<OfflineAlert />
 
 {#if $currentUser === undefined}
     <Page>Lädt...</Page>
