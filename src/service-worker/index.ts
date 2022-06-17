@@ -3,8 +3,11 @@
 import { precacheAssets, validateCache } from './cache';
 import { fetchNetworkFirst } from './fetch';
 import { version } from '$service-worker';
+import { initNotifications } from './notifications';
 
 const worker = self as unknown as ServiceWorkerGlobalScope;
+
+initNotifications(worker);
 
 worker.addEventListener('install', (event) => {
     console.log(`Serviceworker v${version} will install`);

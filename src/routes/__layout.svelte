@@ -4,11 +4,13 @@
     import Page from '$lib/components/Page.svelte';
     import { loginWithGithub } from '$lib/firebase/auth/provider/provider';
     import { initFirebase } from '$lib/firebase/firebase';
+    import { serviceworkerRegistration } from '$lib/serviceworker';
     import { currentUser } from '$lib/user/userStore';
     import { onMount } from 'svelte';
     import '../app.css';
 
-    onMount(() => {
+    onMount(async () => {
+        await serviceworkerRegistration;
         initFirebase();
     });
 

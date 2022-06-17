@@ -11,6 +11,12 @@ const config = {
         adapter: adapter({
             fallback: 'index.html',
         }),
+        serviceWorker: {
+            register: false,
+            files: (path) => {
+                return !path.includes('app_icons');
+            },
+        },
         vite: {
             ssr: {
                 noExternal: [
