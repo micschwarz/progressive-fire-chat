@@ -1,6 +1,5 @@
 import type { User } from '$lib/user/user';
 import { currentUser } from '$lib/user/userStore';
-import { async } from '@firebase/util';
 import type { FirebaseApp } from 'firebase/app';
 import {
     connectAuthEmulator,

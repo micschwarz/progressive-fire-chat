@@ -1,6 +1,4 @@
-import type { User } from '$lib/user/user';
-import { currentUser } from '$lib/user/userStore';
-import { getAuth, GithubAuthProvider, signInWithPopup, type Auth, type UserCredential } from 'firebase/auth';
+import { getAuth, GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const github = new GithubAuthProvider();
 github.setCustomParameters({
