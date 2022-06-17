@@ -6,7 +6,7 @@
     $: reversed = [...messages].reverse();
 </script>
 
-<div class="flex flex-col-reverse gap-1 overflow-y-auto h-full">
+<div class="flex flex-col-reverse gap-1 overflow-y-auto h-full px-1 py-1">
     {#each reversed as message (message)}
         <Message {message} />
     {:else}

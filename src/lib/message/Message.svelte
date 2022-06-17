@@ -10,7 +10,11 @@
         minute: '2-digit',
     });
 
+    const emojiRegex = new RegExp('^\\p{Extended_Pictographic}{1,2}$', 'gmiu');
+
     $: isOwnMessage = message.user.id === $currentUser?.id;
+    $: isEmojiMessage = message.content.search(emojiRegex) !== -1;
+    $: console.log(isEmojiMessage);
 </script>
 
 <div
@@ -21,5 +25,5 @@
     <div class="text-xs text-primary-content/50">
         {message.user.name} um {dateFormat.format(message.createdAt)}
     </div>
-    <div class="text-primary-content">{message.content}</div>
+    <div class="text-primary-content" class:text-3xl={isEmojiMessage}>{message.content}</div>
 </div>
