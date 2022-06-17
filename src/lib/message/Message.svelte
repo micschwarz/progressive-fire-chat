@@ -18,8 +18,8 @@
     class:bg-primary={isOwnMessage}
     class:self-end={isOwnMessage}
 >
-    <div class="text-xs text-neutral-content/50">
+    <div class="text-xs text-primary-content/50">
         {message.user.name} um {dateFormat.format(message.createdAt)}
     </div>
-    <div>{message.content}</div>
+    <div class="text-primary-content">{message.content}</div>
 </div>
