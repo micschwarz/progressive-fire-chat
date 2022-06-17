@@ -6,7 +6,12 @@ const register = (): Promise<ServiceWorkerRegistration | null> =>
             return resolve(null);
         }
 
-        const registration = await navigator.serviceWorker.register('./service-worker.js');
+        let registration: ServiceWorkerRegistration;
+        try {
+            registration = await navigator.serviceWorker.register('./service-worker.js');
+        } catch (_) {
+            return resolve(null);
+        }
         const serviceWorker = registration.installing ?? registration.waiting ?? registration.active;
 
         if (!serviceWorker) {
