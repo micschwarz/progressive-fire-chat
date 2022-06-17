@@ -24,11 +24,13 @@
 {#if $currentUser === undefined}
     <Page>Lädt...</Page>
 {:else if $currentUser === null}
-    <Page>
-        <button class="btn" on:click={login}>Login</button>
-    </Page>
+    <div class="safe-area">
+        <Page>
+            <button class="btn" on:click={login}>Login</button>
+        </Page>
+    </div>
 {:else}
-    <div class="safe-area w-full overflow-hidden grid grid-rows-[max-content_1fr]">
+    <div class="safe-area overflow-hidden grid grid-rows-[max-content_1fr]">
         <Navbar />
         <Page>
             <slot />
