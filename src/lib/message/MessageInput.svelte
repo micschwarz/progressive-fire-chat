@@ -29,7 +29,6 @@
         });
 
         message = '';
-        await request;
 
         sending = false;
     };
