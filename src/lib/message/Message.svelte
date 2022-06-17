@@ -14,7 +14,6 @@
 
     $: isOwnMessage = message.user.id === $currentUser?.id;
     $: isEmojiMessage = message.content.search(emojiRegex) !== -1;
-    $: console.log(isEmojiMessage);
 </script>
 
 <div
