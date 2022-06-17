@@ -38,7 +38,7 @@
     <div class="grow">
         <input
             placeholder="Nachricht"
-            class="input input-bordered w-full"
+            class="input input-bordered w-full text-base"
             type="text"
             bind:value={message}
             disabled={sending}

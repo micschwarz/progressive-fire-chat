@@ -27,7 +27,7 @@
     </div>
 </label>
 
-<div class="p-3">
+<div class="p-1 sm:p-3">
     <div class="navbar bg-base-200 rounded-box">
         <div class="flex-1">
             <div class="hidden sm:block">

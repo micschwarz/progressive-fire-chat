@@ -28,7 +28,7 @@
         <button class="btn" on:click={login}>Login</button>
     </Page>
 {:else}
-    <div class="h-safe-screen grid grid-rows-[max-content_1fr]">
+    <div class="safe-area w-full overflow-hidden grid grid-rows-[max-content_1fr]">
         <Navbar />
         <Page>
             <slot />
@@ -37,14 +37,23 @@
 {/if}
 
 <style>
-    .h-safe-screen {
+    .safe-area {
         --screen-height: 100vh;
-        height: calc(var(--screen-height) - env(safe-area-inset-bottom, 0));
+        --screen-width: 100vw;
+        --safe-inset-bottom: env(safe-area-inset-bottom, 0px);
+        --safe-inset-top: env(safe-area-inset-top, 0px);
+        --safe-inset-left: env(safe-area-inset-left, 0px);
+        --safe-inset-right: env(safe-area-inset-right, 0px);
+
+        height: calc(var(--screen-height) - var(--safe-inset-bottom) - var(--safe-inset-top));
+        width: calc(var(--screen-width) - var(--safe-inset-left) - var(--safe-inset-right));
+        margin-top: var(--safe-inset-top) var(--safe-inset-right) var(--safe-inset-bottom) var(--safe-inset-left);
     }
 
-    @supports (height: 100dvh) {
-        .h-safe-screen {
+    @supports (height: 100dvh) and (width: 100dvw) {
+        .safe-area {
             --screen-height: 100dvh;
+            --screen-width: 100dvw;
         }
     }
 </style>
