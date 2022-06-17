@@ -26,10 +26,23 @@
         <button class="btn" on:click={login}>Login</button>
     </Page>
 {:else}
-    <div class="h-screen grid grid-rows-[max-content_1fr]">
+    <div class="h-safe-screen grid grid-rows-[max-content_1fr]">
         <Navbar />
         <Page>
             <slot />
         </Page>
     </div>
 {/if}
+
+<style>
+    .h-safe-screen {
+        --screen-height: 100vh;
+        height: calc(var(--screen-height) - env(safe-area-inset-bottom, 0));
+    }
+
+    @supports (height: 100dvh) {
+        .h-safe-screen {
+            --screen-height: 100dvh;
+        }
+    }
+</style>
