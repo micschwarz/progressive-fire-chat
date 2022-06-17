@@ -71,7 +71,7 @@ export const getStore = (): Readable<Message[] | undefined> => {
 
         messageStore.update((messages: Message[] | undefined) => {
             const oldMessages = messages ?? [];
-            return [...oldMessages, ...newMessages];
+            return [...oldMessages, ...newMessages].sort((a, b) => +a.createdAt - +b.createdAt);
         });
     });
 
