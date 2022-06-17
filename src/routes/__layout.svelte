@@ -47,7 +47,7 @@
 
         height: calc(var(--screen-height) - var(--safe-inset-bottom) - var(--safe-inset-top));
         width: calc(var(--screen-width) - var(--safe-inset-left) - var(--safe-inset-right));
-        margin-top: var(--safe-inset-top) var(--safe-inset-right) var(--safe-inset-bottom) var(--safe-inset-left);
+        margin: var(--safe-inset-top) var(--safe-inset-right) var(--safe-inset-bottom) var(--safe-inset-left);
     }
 
     @supports (height: 100dvh) and (width: 100dvw) {
