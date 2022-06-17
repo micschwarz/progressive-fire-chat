@@ -45,9 +45,9 @@
         --safe-inset-left: env(safe-area-inset-left, 0px);
         --safe-inset-right: env(safe-area-inset-right, 0px);
 
-        height: calc(var(--screen-height) - var(--safe-inset-bottom) - var(--safe-inset-top));
-        width: calc(var(--screen-width) - var(--safe-inset-left) - var(--safe-inset-right));
-        margin: var(--safe-inset-top) var(--safe-inset-right) var(--safe-inset-bottom) var(--safe-inset-left);
+        height: calc(var(--screen-height));
+        width: calc(var(--screen-width));
+        padding: var(--safe-inset-top) var(--safe-inset-right) var(--safe-inset-bottom) var(--safe-inset-left);
     }
 
     @supports (height: 100dvh) and (width: 100dvw) {
