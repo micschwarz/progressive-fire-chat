@@ -21,6 +21,10 @@
     };
 </script>
 
+<svelte:head>
+    <title>Progressive Fire Chat | Settings</title>
+</svelte:head>
+
 <div class="flex gap-2 items-center mb-4">
     <a class="btn btn-sm btn-square" href="/"><Icon icon={faChevronLeft} /></a>
     <h1 class="text-3xl">Einstellungen</h1>
