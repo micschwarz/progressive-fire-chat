@@ -7,6 +7,20 @@
     "theme_color": "#2a303c",
     "description": "Demo Chat PWA",
     "lang": "de-DE",
+    "shortcuts": [
+        {
+            "name": "Chat",
+            "url": "/",
+            "description": "Chatte mit Leuten",
+            "icons": [{ "src": "/shortcut_icons/chat.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Einstellungen",
+            "url": "/settings",
+            "description": "App Einstellungen",
+            "icons": [{ "src": "/shortcut_icons/settings.png", "sizes": "192x192" }]
+        }
+    ],
     "icons": [
         {
             "src": "/app_icons/icon_48.png",
