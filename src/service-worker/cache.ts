@@ -11,8 +11,6 @@ type cacheNamesAvailable = keyof typeof cachesAvailable;
 
 const assets = Array.from(new Set([...build, ...files]));
 
-export const isAsset = (file: string) => assets.includes(file);
-
 export const precacheAssets = async () => {
     const cache = await getCache('assets');
     await cache.addAll(assets);
@@ -27,6 +25,14 @@ export const validateCache = async () => {
     }
 };
 
+export const getCacheForPath = async (path: string): Promise<Cache> => {
+    const cache = isAsset(path) ? 'assets' : 'requests';
+    const cacheName = cachesAvailable[cache] as cacheNamesAvailable;
+    return getCache(cacheName);
+};
+
 export const getCache = async (name: cacheNamesAvailable): Promise<Cache> => {
     return await caches.open(name);
 };
+
+const isAsset = (file: string) => assets.includes(file);

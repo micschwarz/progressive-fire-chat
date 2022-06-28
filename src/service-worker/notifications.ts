@@ -4,7 +4,7 @@ import { firebaseConfig } from '$lib/firebase/firebase_config';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, onBackgroundMessage } from 'firebase/messaging/sw';
 
-export const initNotifications = (worker: ServiceWorkerGlobalScope) => {
+export const initNotifications = () => {
     const app = initializeApp(firebaseConfig);
     const messaging = getMessaging(app);
     onBackgroundMessage(messaging, (payload) => {

@@ -1,12 +1,10 @@
 /// <reference lib="webworker" />
 
-import { getCache, isAsset } from './cache';
+import { getCacheForPath } from './cache';
 
 export const fetchNetworkFirst = async (request: Request): Promise<Response> => {
     const url = new URL(request.url);
-
-    const cacheName = isAsset(url.pathname) ? 'assets' : 'requests';
-    const cache = await getCache(cacheName);
+    const cache = await getCacheForPath(url.pathname);
 
     let response;
 
