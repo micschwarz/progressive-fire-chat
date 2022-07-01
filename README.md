@@ -1,5 +1,7 @@
 # Progressive Fire Chat
 
+Demo app for university presentation about PWAs
+
 ## Requirements
 
 -   Node.js 16+
